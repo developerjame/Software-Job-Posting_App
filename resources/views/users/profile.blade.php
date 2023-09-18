@@ -1,57 +1,67 @@
 <x-layout>
-    <x-card class="p-10 max-w-lg mx-auto mt-24"
-    >
-    <header class="text-center">
-        <h2 class="text-2xl font-bold uppercase mb-1">
-            User Profile
-        </h2>
-        <p class="mb-4">Edit to update your profile</p>
-    </header>
     
-    <form method="POST" action="" enctype="multipart/form-data">
-        @csrf
-        @method('PUT')
-        <div class="mb-6">
-            <label
-                for="name"
-                class="inline-block text-lg mb-2"
-                >Name</label
-            >
-            <input
-                type="text"
-                class="border border-gray-200 rounded p-2 w-full"
-                name="name" value="{{auth()->user()->name}}"
-            />
-            @error('name')
-               <p class="text-red-500 text-xs mt-1">{{$message}}</p>
-            @enderror
+    <a href="/" class="inline-block text-black ml-4 mb-4"
+    ><i class="fa-solid fa-arrow-left"></i> Back
+    </a>
+    <div class="mx-4">
+    <x-card class="p-10">
+        <div
+            class="flex flex-col items-center justify-center text-center"
+        >
+    
+            
+            <div class="border border-gray-200 w-full mb-6"></div>
+            <div>
+                <h3 class="text-3xl font-bold mb-4">
+                    USER PROFILE
+                </h3>
+                <div class="text-lg space-y-6">
+                    
+                    <table>
+                    <tr>
+                        <td>
+                        <p><b>Name: </b>
+                            {{auth()->user()->name}}
+                        </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        
+                        <p><b>Email: </b>
+                            {{auth()->user()->email}}
+                        </p>
+                        
+                    </tr>
+                    </table>
+    
+                    <a
+                        href="/edit-profile"
+                        class="block bg-primary text-white mt-6 py-2 rounded-xl hover:opacity-80"
+                        >
+                        Edit Profile</a
+                    >
+                    <a
+                        href="/change-password"
+                        class="block bg-primary text-white mt-6 py-2 rounded-xl hover:opacity-80"
+                        >
+                        Change Password</a
+                    >
+    
+                </div>
+            </div>
         </div>
-    
-        <div class="mb-6">
-            <label for="email" class="inline-block text-lg mb-2"
-                >Email</label
-            >
-            <input
-                type="text"
-                class="border border-gray-200 rounded p-2 w-full"
-                name="email"
-                placeholder="Example: Senior Laravel Developer"
-                value="{{auth()->user()->email}}"
-            />
-            @error('email')
-               <p class="text-red-500 text-xs mt-1">{{$message}}</p>
-            @enderror
-        </div>
-    
-        <div class="mb-6">
-            <button
-                class="bg-primary text-white rounded py-2 px-4 hover:bg-black"
-            >
-                Update Profile
-            </button>
-    
-            <a href="/" class="text-black ml-4"> Back </a>
-        </div>
-    </form>
     </x-card>
+    
+    {{--<x-card class="mt-4 p-2 flex space-x-6">
+      <a href="/listings/{{$listing->id}}/edit">
+        <i class="fa-solid fa-pencil"></i>Edit
+    </a>
+    <form method="POST" action="/listings/{{$listing->id}}">
+        @csrf
+        @method('DELETE')
+        <button class="text-red-500"><i class="fa-solid fa-trash">
+            Delete</i></button>
+    </form>
+    </x-card>--}}
+    </div>
     </x-layout>

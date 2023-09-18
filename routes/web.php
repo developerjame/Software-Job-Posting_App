@@ -54,8 +54,17 @@ Route::get('/login', [UserController::class, 'login'])->name('login')->middlewar
 //Authenticate user
 Route::post('/users/authenticate', [UserController::class, 'authenticate']);
 
-//Show profile form
+//Show profile page
 Route::get('/users/profile', [UserController::class, 'profile'])->middleware('auth');
 
+//Show edit profile form
+Route::get('/edit-profile', [UserController::class, 'editProfile']);
+
 //Submit to update user profile
-Route::put('/users/profile', [UserController::class, 'update']);
+Route::put('/users/edit-profile', [UserController::class, 'update']);
+
+//Show change password form
+Route::get('/change-password', [UserController::class, 'changePassword'])->middleware('auth');
+
+//Submit to change password
+Route::post('change-password', [UserController::class, 'updatePassword']);

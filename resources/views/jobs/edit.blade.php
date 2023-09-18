@@ -154,7 +154,7 @@
                 Update Job
             </button>
     
-            <a href="/" class="text-black ml-4"> Back </a>
+            <a href="/jobs/manage" class="text-black ml-4"> Back </a>
         </div>
     </form>
     </x-card>

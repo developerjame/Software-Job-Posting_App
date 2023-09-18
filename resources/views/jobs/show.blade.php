@@ -1,5 +1,4 @@
 <x-layout>
-@include('partials._search')
 <a href="/" class="inline-block text-black ml-4 mb-4"
 ><i class="fa-solid fa-arrow-left"></i> Back
 </a>
@@ -26,6 +25,37 @@
             <h3 class="text-3xl font-bold mb-4">
                 Job Description
             </h3>
+            @auth
+            <div class="text-lg space-y-6">
+                
+                <p>
+                    {{$job->description}}
+                </p>
+
+                <a
+                    href="https://mail.google.com/mail/?view=cm&fs=1&to={{$job->email}}"
+                    class="block bg-primary text-white mt-6 py-2 rounded-xl hover:opacity-80"
+                    ><i class="fa-solid fa-envelope"></i>
+                    Contact Employer</a
+                >
+
+                <a
+                    href="{{$job->website}}"
+                    target="_blank"
+                    class="block bg-black text-white py-2 rounded-xl hover:opacity-80"
+                    ><i class="fa-solid fa-globe"></i> Visit
+                    Website</a
+                >
+                <a
+                            href="/jobs/{{$job->id}}/edit"
+                            class="text-blue-400 px-6 py-2 rounded-xl"
+                            ><i
+                                class="fa-solid fa-pen-to-square"
+                            ></i>
+                            Edit</a
+                        >
+            </div>
+            @else
             <div class="text-lg space-y-6">
                 
                 <p>
@@ -47,6 +77,7 @@
                     Website</a
                 >
             </div>
+            @endauth
         </div>
     </div>
 </x-card>
