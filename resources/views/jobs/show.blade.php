@@ -47,8 +47,9 @@
                     Website</a
                 >
                 <a
+                            id="edit"
                             href="/jobs/{{$job->id}}/edit"
-                            class="text-blue-400 px-6 py-2 rounded-xl"
+                            class="text-blue-400 px-6 py-2 rounded-xl mt-auto"
                             ><i
                                 class="fa-solid fa-pen-to-square"
                             ></i>
